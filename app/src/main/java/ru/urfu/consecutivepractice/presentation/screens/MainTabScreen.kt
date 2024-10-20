@@ -5,7 +5,9 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.List
 import androidx.compose.material.icons.filled.Face
+import androidx.compose.material.icons.rounded.List
 import androidx.compose.material.icons.sharp.Home
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
@@ -23,10 +25,8 @@ import com.github.terrakok.modo.multiscreen.MultiScreenNavModel
 import com.github.terrakok.modo.multiscreen.selectScreen
 import kotlinx.parcelize.Parcelize
 
-// Workshop 3.1 - create main tab screen
 @Parcelize
 class MainTabScreenFinal(
-// Workshop 3.1.1 - define initial state
     private val navModel: MultiScreenNavModel = MultiScreenNavModel(
         ListScreen(),
         AnotherScreen(),
@@ -38,20 +38,16 @@ class MainTabScreenFinal(
     override fun Content(modifier: Modifier) {
         MainTabContent(
             modifier = modifier,
-            // Workshop 3.4 - use navigation state to define UI
             selectedTabPos = navigationState.selected,
             onTabClick = { pos ->
-                // Workshop 3.3 - navigate between tabs
                 selectScreen(pos)
             }
         ) {
-            // Workshop 3.2 - display selected screen
             SelectedScreen(
                 Modifier
                     .padding(this)
                     .fillMaxSize()
             ) { innerModifier ->
-                // Workshop 3.5 - support animation using build-in SlideTransition
                 SlideTransition(innerModifier)
             }
         }
@@ -100,6 +96,6 @@ enum class MainTabs(
     val icon: ImageVector,
     val title: String
 ) {
-    HOME(Icons.Sharp.Home, "Home"),
+    HOME(Icons.AutoMirrored.Rounded.List, "List"),
     PROFILE(Icons.Default.Face, "Profile")
 }

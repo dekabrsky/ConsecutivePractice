@@ -43,18 +43,6 @@ class MainActivity : ComponentActivity() {
                     rootScreen.Content(modifier = Modifier.fillMaxSize())
                 }
             }
-
-//            KoinApplication(
-//                application = {
-//                    koinApplication {
-//                        // your configuration & modules here
-//                        androidContext(this@MainActivity)
-//                        modules(rootModule)
-//                    }
-//                }
-//            ) {
-//
-//            }
         }
     }
 }
