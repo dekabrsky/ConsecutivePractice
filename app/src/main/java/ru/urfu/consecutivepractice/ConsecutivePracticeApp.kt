@@ -8,6 +8,7 @@ import logcat.logcat
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
+import ru.urfu.consecutivepractice.di.networkModule
 import ru.urfu.consecutivepractice.di.rootModule
 
 class ConsecutivePracticeApp : Application() {
@@ -26,7 +27,7 @@ class ConsecutivePracticeApp : Application() {
         startKoin {
             androidLogger()
             androidContext(this@ConsecutivePracticeApp)
-            modules(rootModule)
+            modules(rootModule, networkModule)
         }
     }
 }

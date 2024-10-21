@@ -6,7 +6,10 @@ import ru.urfu.consecutivepractice.presentation.model.ConstructorUiModel
 import ru.urfu.consecutivepractice.ui.theme.Bronze
 
 class FormulaOneUiMapper {
-    fun mapConstructors(entity: ConstructorEntity): ConstructorUiModel {
+    fun mapConstructors(list: List<ConstructorEntity>): List<ConstructorUiModel> =
+        list.sortedBy { it.position }.map { mapConstructor(it) }
+
+    private fun mapConstructor(entity: ConstructorEntity): ConstructorUiModel {
         return ConstructorUiModel(
             entity.position.toString(),
             entity.name,
