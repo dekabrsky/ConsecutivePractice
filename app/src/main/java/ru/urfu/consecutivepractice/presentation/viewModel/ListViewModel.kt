@@ -29,33 +29,13 @@ class ListViewModel(
     }
 
     private fun loadConstructors() {
-
-//        val errorHandler = CoroutineExceptionHandler { _, throwable ->
-//            mutableState.error = throwable.localizedMessage
-//        }
-
         viewModelScope.launchLoadingAndError(
             handleError = { mutableState.error = it.localizedMessage },
             updateLoading = { mutableState.loading = it }
         ) {
-//            try {
-//                mutableState.error = null
-//                mutableState.items =
-//                    mapper.mapConstructors(repository.getConstructors(viewState.year))
-//            } catch (e: Exception) {
-//                mutableState.error = e.localizedMessage
-//            }
-
-//            runCatching {
-//                mapper.mapConstructors(repository.getConstructors(viewState.year))
-//            }
-//                .onSuccess {
-//                    mutableState.items = it
-//                    mutableState.error = null
-//                }
-//                .onFailure { mutableState.error = it.localizedMessage }
-
+            mutableState.items = emptyList()
             mutableState.error = null
+
             mutableState.items =
                 mapper.mapConstructors(repository.getConstructors(viewState.year))
         }

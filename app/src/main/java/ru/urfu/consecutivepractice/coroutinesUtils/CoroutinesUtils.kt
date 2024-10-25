@@ -34,11 +34,11 @@ class LoadingContextHandler(
 private suspend fun <T> handleLoading(
     coroutineScope: CoroutineScope,
     block: suspend CoroutineScope.() -> T
-): Result<T> {
+): T {
     return coroutineScope.runCatching {
         coroutineScope.coroutineContext[LoadingContextHandler]?.showProgress()
         block()
     }.also {
         coroutineScope.coroutineContext[LoadingContextHandler]?.hideProgress()
-    }
+    }.getOrThrow()
 }
