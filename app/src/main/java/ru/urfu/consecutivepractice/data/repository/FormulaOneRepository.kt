@@ -5,6 +5,7 @@ import kotlinx.coroutines.withContext
 import ru.urfu.consecutivepractice.data.api.FormulaOneApi
 import ru.urfu.consecutivepractice.data.mapper.FormulaOneResponseToEntityMapper
 import ru.urfu.consecutivepractice.domain.model.ConstructorEntity
+import ru.urfu.consecutivepractice.domain.model.DriverEntity
 import ru.urfu.consecutivepractice.domain.repository.IFormulaOneRepository
 
 class FormulaOneRepository(
@@ -14,6 +15,12 @@ class FormulaOneRepository(
     override suspend fun getConstructors(year: Int): List<ConstructorEntity> {
         return withContext(Dispatchers.IO) {
             mapper.mapConstructors(api.getConstructors(year))
+        }
+    }
+
+    override suspend fun getDrivers(): List<DriverEntity> {
+        return withContext(Dispatchers.IO) {
+            mapper.mapDrivers(api.getDrivers())
         }
     }
 }

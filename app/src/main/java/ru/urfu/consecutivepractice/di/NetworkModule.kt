@@ -18,7 +18,6 @@ fun provideRetrofit(): Retrofit {
         .addConverterFactory(GsonConverterFactory.create())
         .client(OkHttpClient.Builder().build())
         .build()
-
 }
 
 fun provideNetworkApi(retrofit: Retrofit): FormulaOneApi =

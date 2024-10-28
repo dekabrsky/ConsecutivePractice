@@ -76,4 +76,6 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.gson)
     implementation(libs.compose.wheelPicker)
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
 }

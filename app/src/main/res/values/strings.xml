@@ -3,4 +3,5 @@
     <string name="select_year">Укажите год</string>
     <string name="confirm">Подтвердить</string>
     <string name="cancel">Отмена</string>
+    <string name="drivers">Гонщики</string>
 </resources>

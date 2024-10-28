@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.List
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.rounded.List
 import androidx.compose.material.icons.sharp.Home
@@ -24,11 +25,13 @@ import com.github.terrakok.modo.multiscreen.MultiScreen
 import com.github.terrakok.modo.multiscreen.MultiScreenNavModel
 import com.github.terrakok.modo.multiscreen.selectScreen
 import kotlinx.parcelize.Parcelize
+import ru.urfu.consecutivepractice.presentation.drivers.screens.DriversScreen
 
 @Parcelize
 class MainTabScreenFinal(
     private val navModel: MultiScreenNavModel = MultiScreenNavModel(
         ListScreen(),
+        DriversScreen(),
         AnotherScreen(),
         selected = 0
     )
@@ -97,5 +100,6 @@ enum class MainTabs(
     val title: String
 ) {
     HOME(Icons.AutoMirrored.Rounded.List, "List"),
+    DRIVERS(Icons.Default.AccountCircle, "Drivers"),
     PROFILE(Icons.Default.Face, "Profile")
 }
