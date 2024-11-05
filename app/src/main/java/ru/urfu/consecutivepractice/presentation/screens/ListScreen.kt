@@ -129,7 +129,7 @@ class ListScreen(
                     onClick = {
                         val currentIndex = pickerState.currentIndex
                         if (currentIndex != -1) {
-                            viewModel.setYear(state.years[pickerState.currentIndexSnapshot])
+                            viewModel.updateYear(state.years[pickerState.currentIndexSnapshot])
                         }
                     }
                 ) {
