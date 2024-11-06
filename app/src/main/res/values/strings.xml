@@ -4,4 +4,5 @@
     <string name="confirm">Подтвердить</string>
     <string name="cancel">Отмена</string>
     <string name="drivers">Гонщики</string>
+    <string name="error_message">Произошла ошибка</string>
 </resources>

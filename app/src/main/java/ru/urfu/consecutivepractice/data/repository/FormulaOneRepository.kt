@@ -28,9 +28,9 @@ class FormulaOneRepository(
         }
     }
 
-    override suspend fun getDrivers(): List<DriverEntity> {
+    override suspend fun getDrivers(lastId: String?): List<DriverEntity> {
         return withContext(Dispatchers.IO) {
-            mapper.mapDrivers(api.getDrivers())
+            mapper.mapDrivers(api.getDrivers(lastId))
 
             /*listOf(
                 DriverEntity("Carlos Sainz", "SAI", "ES"),
@@ -56,7 +56,12 @@ class FormulaOneRepository(
     override suspend fun getSavedDrivers(): List<DriverEntity> {
         return withContext(Dispatchers.IO) {
             driverDb.driversDao().getAll().map {
-                DriverEntity(it.name.orEmpty(), it.tag.orEmpty(), it.nationality.orEmpty())
+                DriverEntity(
+                    it.id?.toString().orEmpty(),
+                    it.name.orEmpty(),
+                    it.tag.orEmpty(),
+                    it.nationality.orEmpty()
+                )
             }
         }
     }

@@ -5,7 +5,7 @@ import ru.urfu.consecutivepractice.domain.model.DriverEntity
 
 interface IFormulaOneRepository {
     suspend fun getConstructors(year: Int): List<ConstructorEntity>
-    suspend fun getDrivers(): List<DriverEntity>
+    suspend fun getDrivers(lastId: String?): List<DriverEntity>
     suspend fun saveDriver(driver: DriverEntity)
     suspend fun getSavedDrivers(): List<DriverEntity>
 }

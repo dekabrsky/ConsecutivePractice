@@ -1,8 +1,11 @@
 package ru.urfu.consecutivepractice.presentation.drivers.screens
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
@@ -11,6 +14,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -22,6 +26,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.paging.LoadState
+import androidx.paging.compose.collectAsLazyPagingItems
 import com.github.terrakok.modo.Screen
 import com.github.terrakok.modo.ScreenKey
 import com.github.terrakok.modo.generateScreenKey
@@ -46,8 +52,7 @@ class DriversScreen(
             parametersOf(navigation)
         }
 
-        val state = viewModel.viewState
-
+        val pagingItems = viewModel.pagingFlow.collectAsLazyPagingItems()
 
         Scaffold(
             topBar = {
@@ -85,28 +90,27 @@ class DriversScreen(
                     )
                 }
 
-                state.error?.let {
-                    Text(text = it)
-                    Icon(
-                        imageVector = Icons.Default.Refresh,
-                        contentDescription = null,
-                        Modifier.clickable { viewModel.onReloadClicked() }
-                    )
-                }
-
                 LazyColumn(
                     Modifier.fillMaxSize(),
                     lazyColumnState
                 ) {
-                    items(state.items) {
-                        DriverItem(item = it, viewModel::onFavoriteClicked)
+                    items(count = pagingItems.itemCount) { index ->
+                        pagingItems[index]?.let { DriverItem(item = it, viewModel::onFavoriteClicked) }
+                            ?: MessagePlaceholder()
                     }
                 }
-
-                if (state.loading) {
-                    FullScreenProgress()
-                }
             }
+        }
+    }
+
+    @Composable
+    fun MessagePlaceholder() {
+        Box(
+            Modifier
+                .fillMaxWidth()
+                .height(48.dp)
+        ) {
+            CircularProgressIndicator()
         }
     }
 }

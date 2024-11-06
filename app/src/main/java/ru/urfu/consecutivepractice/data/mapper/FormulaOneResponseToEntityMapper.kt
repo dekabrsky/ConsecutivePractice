@@ -21,6 +21,7 @@ class FormulaOneResponseToEntityMapper {
     fun mapDrivers(response: DriversPagingResponse): List<DriverEntity> {
         return response.drivers?.map {
             DriverEntity(
+                id = it?.id.orEmpty(),
                 tag = it?.tag.orEmpty(),
                 name = it?.name.orEmpty(),
                 nationality = it?.nationality.orEmpty()
