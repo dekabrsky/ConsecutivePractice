@@ -16,6 +16,8 @@ lifecycleRuntimeKtx = "2.8.6"
 activityCompose = "1.9.3"
 composeBom = "2024.04.01"
 modoCompose = "0.10.0"
+protobufJavalite = "3.21.11"
+protobufKotlinLite = "3.21.11"
 retrofit = "2.11.0"
 composeWheelPicker = "1.0.0-beta05"
 roomRuntime = "2.6.1"
@@ -23,6 +25,7 @@ datastoreCoreAndroid = "1.1.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-datastore = { module = "androidx.datastore:datastore", version.ref = "datastorePreferences" }
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleRuntimeKtx" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
@@ -50,6 +53,8 @@ koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", versi
 koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koinCompose" }
 modo-compose = { module = "com.github.terrakok:modo-compose", version.ref = "modoCompose" }
 debug-logcat = { group = "com.squareup.logcat", name = "logcat", version = "0.1" }
+protobuf-javalite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protobufJavalite" }
+protobuf-kotlin-lite = { module = "com.google.protobuf:protobuf-kotlin-lite", version.ref = "protobufKotlinLite" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 compose-wheelPicker = { module = "com.github.zj565061763:compose-wheel-picker", version.ref = "composeWheelPicker" }
 androidx-datastore-core-android = { group = "androidx.datastore", name = "datastore-core-android", version.ref = "datastoreCoreAndroid" }

@@ -26,13 +26,14 @@ import com.github.terrakok.modo.multiscreen.MultiScreenNavModel
 import com.github.terrakok.modo.multiscreen.selectScreen
 import kotlinx.parcelize.Parcelize
 import ru.urfu.consecutivepractice.presentation.drivers.screens.DriversScreen
+import ru.urfu.consecutivepractice.presentation.profile.screen.ProfileScreen
 
 @Parcelize
 class MainTabScreenFinal(
     private val navModel: MultiScreenNavModel = MultiScreenNavModel(
         ListScreen(),
         DriversScreen(),
-        AnotherScreen(),
+        ProfileScreen(),
         selected = 0
     )
 ) : MultiScreen(navModel) {

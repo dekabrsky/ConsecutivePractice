@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option java_package = "ru.urfu.consecutivepractice.domain.model";
+option java_multiple_files = true;
+
+message ProfileEntity {
+  string photo_uri = 1;
+  string name = 2;
+  Grade grade = 3;
+  string url = 4;
+}
+enum Grade {
+    JUNIOR = 0;
+    MIDDLE = 1;
+    SENIOR = 2;
+}
