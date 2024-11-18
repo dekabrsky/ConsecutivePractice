@@ -2,6 +2,7 @@ package ru.urfu.consecutivepractice
 
 import android.app.Application
 import com.github.terrakok.modo.ModoDevOptions
+import com.jakewharton.threetenabp.AndroidThreeTen
 import logcat.AndroidLogcatLogger
 import logcat.LogPriority
 import logcat.logcat
@@ -16,6 +17,7 @@ class ConsecutivePracticeApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        AndroidThreeTen.init(this)
 
         AndroidLogcatLogger.installOnDebuggableApp(this, minPriority = LogPriority.VERBOSE)
         ModoDevOptions.onIllegalScreenModelStoreAccess = ModoDevOptions.ValidationFailedStrategy { throwable ->

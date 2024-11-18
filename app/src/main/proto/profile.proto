@@ -8,6 +8,7 @@ message ProfileEntity {
   string name = 2;
   Grade grade = 3;
   string url = 4;
+  string time = 5;
 }
 enum Grade {
     JUNIOR = 0;

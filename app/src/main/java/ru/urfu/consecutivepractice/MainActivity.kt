@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.app.NotificationManagerCompat
 import com.github.terrakok.modo.Modo.rememberRootScreen
 import com.github.terrakok.modo.RootScreen
 import com.github.terrakok.modo.stack.DefaultStackScreen
@@ -22,13 +23,20 @@ import org.koin.compose.KoinApplication
 import org.koin.core.KoinApplication
 import org.koin.dsl.koinApplication
 import ru.urfu.consecutivepractice.di.rootModule
+import ru.urfu.consecutivepractice.presentation.profile.channelManager.NotificationChannelManager
 import ru.urfu.consecutivepractice.presentation.screens.MainTabScreenFinal
 import ru.urfu.consecutivepractice.ui.theme.ConsecutivePracticeTheme
 
 class MainActivity : ComponentActivity() {
+
+    private val channelManager: NotificationChannelManager by lazy {
+        NotificationChannelManager(NotificationManagerCompat.from(this), this)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        channelManager.createNotificationChannels()
         setContent {
             val rootScreen: RootScreen<DefaultStackScreen> = rememberRootScreen {
                 DefaultStackScreen(
